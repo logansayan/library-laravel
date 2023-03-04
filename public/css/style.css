@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    color: #222;
+    background-color: #888;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-around;
+    gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+
+.book {
+    /* border: 1px solid currentColor; */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.published {
+    border: 1px dashed currentColor;
+    padding: .5rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+.author {
+    text-decoration: overline;
+}
+
+button {
+    cursor: pointer;
+    padding: .5rem;
+    background-color: transparent;
+    text-transform: uppercase;
+    border: none;
+    border: 1px solid grey;
+}
