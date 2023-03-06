@@ -45,6 +45,12 @@ h4 {
     gap: 1rem;
     justify-content: space-between;
     background-color: #fff;
+    text-decoration: none;
+    color: inherit;
+}
+
+.title {
+    font-size: 1.2rem;
 }
 
 .bottom {

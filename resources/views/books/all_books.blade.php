@@ -10,7 +10,7 @@
         <div class="books">
             @foreach($books as $book)
                 <div class="book">
-                    <h4>{{$book->title}} - {{$book->author}}</h4>
+                    <a href="/{{$book->id}}" class="title">{{$book->title}} - {{$book->author}}</a>
                     <p>{{Str::limit($book->description, 200)}}</p>
                     <div class="bottom">
                         <p class="author">- {{$book->author}}</p>

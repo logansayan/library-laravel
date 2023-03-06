@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,14 @@ use App\Http\Controllers\BookController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get("/", [BookController::class, "allBooks"])->name("index");
 
-Route::get("/", [BookController::class, "allBooks"]);
+Route::get("/addBook", [BookController::class, "addBook"])->name("add_book");
+Route::post("/addBook", [BookController::class, "storeBook"]);
+
+Route::get("/register", [UserController::class, "register"])->name("register");
+
+Auth::routes();
+Route::get("/{book}", [BookController::class, "singleBook"])->name("singleBook");
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
