@@ -79,3 +79,11 @@ button {
     border: none;
     border: 1px solid grey;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+    margin: 0 auto;
+    gap: .5rem
+}

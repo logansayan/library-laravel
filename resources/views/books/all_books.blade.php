@@ -21,4 +21,6 @@
             @endforeach
         </div>
     @endif
+
+    <a href="/addBook">Add a book</a>
 @endsection

@@ -42,4 +42,31 @@ class BookController extends Controller
             return redirect("/addBook")->with("message", "Please fill the required form fields");
         }
     }
+
+    public function editBook(Book $book) {
+        return view("books.edit_book", [
+            "book" => $book
+        ]);
+    }
+
+    public function updateBook(Book $book, Request $request) {
+        $formFields = $request->validate([
+            "title" => "",
+            "author" => "",
+            "description" => "",
+            "price" => "",
+            "published_at" => "",
+            "price" => ""
+        ]);
+
+        $book->update($formFields);
+
+        return redirect("/")->with("message", "Book successfully updated");
+    }
+
+    public function deleteBook(Book $book) {
+        $title = $book->title;
+        $book->delete();
+        return redirect("/")->with("message", "Successfully deleted!\"" . $title . "\"");
+    }
 }
