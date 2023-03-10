@@ -31,6 +31,6 @@ Route::post("/addBook", [BookController::class, "storeBook"]);
 Route::get("/{book}", [BookController::class, "singleBook"])->name("books.book");
 
 Route::get("{book}/edit", [BookController::class, "editBook"])->name("books.edit");
-Route::put("{book}/edit", [BookController::class, "updateBook"])->middleware("auth");
+Route::put("{book}/edit", [BookController::class, "updateBook"])->name("books.update");
 Route::delete("{book}/delete", [BookController::class, "deleteBook"])->name("books.delete");
 
