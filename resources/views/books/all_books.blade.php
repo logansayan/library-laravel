@@ -22,5 +22,5 @@
         </div>
     @endif
 
-    <a href="/addBook">Add a book</a>
+    <a href="/addBook" class="add-btn">Add a book</a>
 @endsection

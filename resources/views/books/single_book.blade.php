@@ -9,10 +9,9 @@
     <p>${{$book->price}}</p>
     <button>Purchase</button>
 
+    @if (auth()->user()->id == $book->user_id)
     <a href={{route("books.edit", ["book" => $book->id])}}>Edit this book</a>
-    <form action={{route("books.delete", ["book" => $book->id])}} method="POST">
-        @csrf
-        @method("delete")
-        <button>Delete this book</button>
-    </form>
+    <a href="{{route("books.confirmDelete", ["book" => $book->id])}}">Delete this book</a>
+    
+    @endif
 @endsection

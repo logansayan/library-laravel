@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -53,23 +52,36 @@ class BookController extends Controller
     }
 
     public function updateBook(Book $book, Request $request) {
-        $formFields = $request->validate([
-            "title" => "",
-            "author" => "",
-            "description" => "",
-            "price" => "",
-            "published_at" => "",
-            "price" => ""
+        if (auth()->user()->id == $book->user_id) {
+            $formFields = $request->validate([
+                "title" => "",
+                "author" => "",
+                "description" => "",
+                "price" => "",
+                "published_at" => "",
+                "price" => ""
+            ]);
+    
+            $book->update($formFields);
+    
+            return redirect("/")->with("message", "Book successfully updated");
+        }
+
+        return redirect("/")->with("message", "You are not authorized to edit someone else's book listing");
+    }
+
+    public function confirmDelete(Book $book) {
+        return view("books.confirm_delete", [
+            "book" => $book
         ]);
-
-        $book->update($formFields);
-
-        return redirect("/")->with("message", "Book successfully updated");
     }
 
     public function deleteBook(Book $book) {
-        $title = $book->title;
-        $book->delete();
-        return redirect("/")->with("message", "Successfully deleted \"" . $title . "\"");
+        if (auth()->user()->id == $book->user_id) {
+            $title = $book->title;
+            $book->delete();
+            return redirect("/")->with("message", "Successfully deleted \"" . $title . "\"");
+        }
+        return redirect("/")->with("message", "You are not authorized to delete someone else's book listing");
     }
 }

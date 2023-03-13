@@ -23,11 +23,14 @@ Route::get("/login", [UserController::class, "login"])->name("login");
 Route::post("/login", [UserController::class, "authenticate"]);
 
 Route::post("/logout", [UserController::class, "logout"])->name("logout")->name("users.logout")->middleware("auth");
+
 Route::get("/addBook", [BookController::class, "addBook"])->name("books.add")->middleware("auth");
 Route::post("/addBook", [BookController::class, "storeBook"])->middleware("auth");
 
 Route::get("{book}/edit", [BookController::class, "editBook"])->name("books.edit")->middleware("auth");
 Route::put("{book}/edit", [BookController::class, "updateBook"])->middleware("auth");
+
+Route::get("{book}/delete", [BookController::class, "confirmDelete"])->name("books.confirmDelete")->middleware("auth");
 Route::delete("{book}/delete", [BookController::class, "deleteBook"])->name("books.delete")->middleware("auth");
 
 Route::get("/", [BookController::class, "allBooks"])->name("users.index");

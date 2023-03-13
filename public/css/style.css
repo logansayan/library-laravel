@@ -74,10 +74,24 @@ h4 {
 button {
     cursor: pointer;
     padding: .5rem;
-    background-color: transparent;
+    background-color: #efefef;
+    color: #222;
     text-transform: uppercase;
     border: none;
-    border: 1px solid grey;
+}
+
+.add-btn {
+    cursor: pointer;
+    padding: .5rem;
+    background-color: #efefef;
+    color: #222;
+    text-transform: uppercase;
+    border: none;
+    width: fit-content;
+    margin: 2rem auto;
+    text-align: center;
+    display: block;
+    text-decoration: none;
 }
 
 form {
@@ -86,4 +100,15 @@ form {
     max-width: 40rem;
     margin: 0 auto;
     gap: .5rem
+}
+
+input,
+textarea {
+    padding: .5rem 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+
 }
