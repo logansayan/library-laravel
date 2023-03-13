@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -34,6 +35,8 @@ class BookController extends Controller
             "published_at" => "",
             "price" => ""
         ]);
+
+        $formFields["user_id"] = auth()->user()->id;
 
         if (!$formFields["title"] == "" && !$formFields["author"] == "") {
             Book::create($formFields);
@@ -67,6 +70,6 @@ class BookController extends Controller
     public function deleteBook(Book $book) {
         $title = $book->title;
         $book->delete();
-        return redirect("/")->with("message", "Successfully deleted!\"" . $title . "\"");
+        return redirect("/")->with("message", "Successfully deleted \"" . $title . "\"");
     }
 }
